@@ -615,4 +615,72 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  /* ==========================================================================
+     12. BEST FRIEND REPORT CARD INTERACTIONS
+     ========================================================================== */
+  const starBtn = document.getElementById('award-star-btn');
+  const starCounter = document.getElementById('gold-star-counter');
+  const printBtn = document.getElementById('print-report-btn');
+  const hugBtn = document.getElementById('bestie-hug-btn');
+  const reportToast = document.getElementById('report-toast');
+
+  let starCount = 10;
+  let toastTimeout = null;
+
+  function showReportToast(msg) {
+    if (!reportToast) return;
+    reportToast.textContent = msg;
+    reportToast.style.opacity = '1';
+    if (toastTimeout) clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+      reportToast.style.opacity = '0';
+    }, 4000);
+  }
+
+  starBtn?.addEventListener('click', () => {
+    starCount++;
+    if (starCounter) starCounter.textContent = starCount;
+
+    // Spawn floating star
+    const starEl = document.createElement('span');
+    starEl.className = 'floating-gold-star';
+    starEl.textContent = '⭐';
+    if (starBtn.parentElement) {
+      const rect = starBtn.getBoundingClientRect();
+      const parentRect = starBtn.parentElement.getBoundingClientRect();
+      starEl.style.left = `${(rect.left - parentRect.left) + rect.width / 2 + (Math.random() * 40 - 20)}px`;
+      starEl.style.top = `${rect.top - parentRect.top}px`;
+      starBtn.parentElement.appendChild(starEl);
+      setTimeout(() => starEl.remove(), 1200);
+    }
+
+    // Confetti burst
+    if (window.confetti) {
+      confetti({
+        particleCount: 40,
+        spread: 60,
+        origin: { y: 0.8 },
+        colors: ['#f59e0b', '#fde68a', '#f28b9c', '#ffffff']
+      });
+    }
+
+    const praises = [
+      `Awarded! Parsa is officially at ${starCount} Gold Stars! ⭐`,
+      `Verified: Certified Greatest Best Friend on Planet Earth! 🌍`,
+      `Another Star Added! Summa Cum Laude Status Confirmed! 🎓`,
+      `A+++ Bestie! Aryan is proud to have you! 💖`,
+      `Gold Star #${starCount}! Queen behavior as always! 👑`
+    ];
+    showReportToast(praises[Math.floor(Math.random() * praises.length)]);
+  });
+
+  printBtn?.addEventListener('click', () => {
+    window.print();
+  });
+
+  hugBtn?.addEventListener('click', () => {
+    shootHeartConfetti();
+    showReportToast("✋ High-Five Received! Aryan is sending infinite bestie love your way! 💖");
+  });
 });
