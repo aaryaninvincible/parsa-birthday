@@ -15,10 +15,20 @@ A handcrafted, interactive cottagecore birthday scrapbook website created with l
 - **🎂 Make a Wish (Interactive Cake)**: Tap the glowing candle flame to blow it out and trigger a grand multi-stage confetti shower!
 - **📱 100% Responsive**: Tailored for smooth viewing on mobile phones, tablets, and laptops.
 
-## 🚀 Live Deployment
+## 🚀 Live Deployment on Vercel
 
-- Hosted on **Vercel**
-- Repository on **GitHub**
+Click the button below to deploy this repository to **Vercel** with one click:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Faaryaninvincible%2Fparsa-birthday)
+
+Or deploy via terminal:
+```bash
+# In the repository folder:
+vercel
+```
+
+## 📦 GitHub Repository
+- **URL**: [https://github.com/aaryaninvincible/parsa-birthday](https://github.com/aaryaninvincible/parsa-birthday)
 
 ---
 *Created with love by Aryan for Parsa • Best Friends Forever 💖*
